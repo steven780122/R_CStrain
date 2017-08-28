@@ -1,0 +1,318 @@
+1. True: 1
+> TRUE + 8.7
+[1] 9.7
+> FALSE + 8.7
+[1] 8.7
+
+2. 文字:
+> "Steven" + "Hsiao"
+Error in "Steven" + "Hsiao" : non-numeric argument to binary operator
+> "Steven" * 5
+Error in "Steven" * 5 : non-numeric argument to binary operator
+> "Steven" * FALSE
+Error in "Steven" * FALSE : non-numeric argument to binary operator
+
+**但是字串的運算則不如 Python 或 Ruby 這麼彈性!! 
+char * 5 # Error
+char + " World!" # Error
+
+*如果要將字串相加: 搜尋: R concat character
+
+3. 
+數值
+integer
+numeric
+complex
+邏輯值:
+logical
+文字:
+
+*判斷是否是某個type   is.XXX:
+> is.integer(123)
+[1] FALSE
+> is.integer(123L)
+[1] TRUE
+> is.integer(TRUE)
+[1] FALSE
+> is.integer(8 + 7i)
+[1] FALSE
+> is.numeric(123)
+[1] TRUE
+> is.complex(8 + 7i)
+[1] TRUE
+> is.logical(TRUE)
+[1] TRUE
+> is.character("XD")
+[1] TRUE
+
+*轉換  as.XXX :
+> as.integer(8.7)
+[1] 8
+> as.integer(8.7L)
+[1] 8
+Warning message:
+integer literal 8.7L contains decimal; using numeric value 
+> as.integer(TRUE)
+[1] 1
+> as.integer(FALSE)
+[1] 0
+> as.numeric(FALSE)
+[1] 0
+> as.numeric(8 + 7i)
+[1] 8
+Warning message:
+imaginary parts discarded in coercion   >> 虛部被捨棄!!
+> as.numeric("8.7")
+[1] 8.7
+> as.numeric("Steven")
+[1] NA
+Warning message:
+NAs introduced by coercion   >> 字串不能轉
+> as.logical(1)
+[1] TRUE
+> as.logical(0)
+[1] FALSE
+> as.logical(2)
+[1] TRUE
+> as.logical(-5566)         >> 只有0會得到FALSE
+[1] TRUE
+> as.logical("XD")          >> 字串可能會得NA除非是TRUE or FALSE
+[1] NA
+> as.logical(
+"TRUE")
+[1] TRUE
+
+*as.character都可以成功
+> as.character(8 + 7i)
+[1] "8+7i"
+> as.character(8.7L)
+[1] "8.7"
+Warning message:
+integer literal 8.7L contains decimal; using numeric value 
+> as.character(87L)
+[1] "87"
+> as.character(TRUE)
+[1] "TRUE"
+
+
+4. 日期 & 時間:
+預設以西元 1970 年 1 月 1 日為 0，在這一天以後的每天都 +1 來記錄，而這一天以前的每天都 -1 來記錄
+(最小單位是天!!!)
+> Sys.Date()
+[1] "2017-08-26"
+> Sys.Date() - 1
+[1] "2017-08-25"
+> Sys.Date() + 1
+[1] "2017-08-27"
+> Sys.Date() - 365
+[1] "2016-08-26"
+> Sys.Date() + 365
+[1] "2018-08-26"
+> as.integer(Sys.Date())
+[1] 17404
+> Sys.Date() - 17404
+[1] "1970-01-01"
+
+字串時間轉為Date Type:
+> earth_quake <- "1999-09-21"
+> class(earth_quake)
+[1] "character"
+> earth_quake + 1
+Error in earth_quake + 1 : non-numeric argument to binary operator
+> as.Date(earth_quake)
+[1] "1999-09-21"
+> earth_quake
+[1] "1999-09-21"
+> class(as.Date(earth_quake))
+[1] "Date"
+> class(earth_quake)
+[1] "character"
+> as.Date(earth_quake) + 1
+[1] "1999-09-22"
+
+*日期時間:
+(最小單位是秒!!!)
+> Sys.time()
+[1] "2017-08-26 19:51:34 CST"
+> as.integer(Sys.time())
+[1] 1503748339
+> Sys.time() - as.integer(Sys.time())
+[1] "1970-01-01 08:00:00 CST"      >>  可以搜尋GMT + 8  (CST是格林威治時間+8小時)
+> class(Sys.time())
+[1] "POSIXct" "POSIXt" 
+***
+> as.POSIXct("1970-01-01 08:00:00", tz="GMT")
+[1] "1970-01-01 08:00:00 GMT"
+> as.integer(as.POSIXct("1970-01-01 08:00:00", tz="GMT"))   >> 28800即為8小時的秒數
+[1] 28800
+> as.integer(as.POSIXct("1970-01-01 00:00:00", tz="GMT"))
+[1] 0
+
+_______________________________
+更詳細
+> format(Sys.Date(), "%Y")
+[1] "2017"
+> format(Sys.Date(), "%Y%B")
+[1] "2017八月"
+> format(Sys.Date(), "%Y%B%A")
+[1] "2017八月星期六"
+> format(Sys.Date(), "%Y%b%A")
+[1] "2017八月星期六"
+> Sys.getlocale()
+[1] "LC_COLLATE=Chinese (Traditional)_Taiwan.950;
+LC_CTYPE=Chinese (Traditional)_Taiwan.950;LC_MONETARY=Chinese (Traditional)_Taiwan.950;
+LC_NUMERIC=C;LC_TIME=Chinese (Traditional)_Taiwan.950"
+
+應該可以透過修改locale改成英文
+Windows 設定 locale
+
+在 console 輸入這段指令可以切換與課程教材相同的 locale
+Sys.setlocale(category = "LC_ALL", locale = "English_United States.1252")
+
+
+
+
+參考:https://www.learn-r-the-easy-way.tw/chapter4.html
+不同符號所代表的格式整理在下表：
+符號	格式	範例
+%d	日	01
+%a	禮拜幾的縮寫	Mon
+%A	禮拜幾	Monday
+%m	月	01
+%b	月名稱的縮寫	Jan
+%B	月名稱	January
+%y	兩位數的年	70
+%Y	四位數的年	1970
+
+
+*** 所以如何將String 合起來/ 重複:
+搜尋關鍵字: concatenate/ repeat
+paste:
+> "Steven" + "Hsiao"
+Error in "Steven" + "Hsiao" : non-numeric argument to binary operator
+> ?paste
+> paste("Steven", "Hsiao")
+[1] "Steven Hsiao"
+
+strrep:
+> "R" * 7
+Error in "R" * 7 : non-numeric argument to binary operator
+> strrep("R", times = 7)
+[1] "RRRRRRR"
+
+_________________________________________________________
+
+5. 函數
+():  
+-function call
+-priority
+[]:
+-Indexing: 
+ 1.position
+ 2.logical
+
+
+{}:
+-Code block
+
+
+
+_______________________
+課後練習:
+1. 換算公里與英里
+Tony 不知道全程馬拉松 42.195 公里換算成英里是多少？請用 R 語言的命令列當作計算機來幫助他。
+> # 1 km equals to 0.621371192 miles
+> km_to_mile <- 0.621371192
+> 
+> # Print km_to_mile in the console
+> print(km_to_mile)
+[1] 0.6213712
+> 
+> # The distance of full marathon measured in km
+> full_marathon_km <- 42.195
+> 
+> # The distance of full marathon measured in mile
+> full_marathon_mile <- full_marathon_km * km_to_mile
+>   
+> # Print full_marathon_mile in the console
+> print(full_marathon_mile)
+[1] 26.21876
+>
+
+
+2. 
+# Create a numeric variable my_num equals to 8
+> my_num <- 8
+> 
+> # Create a integer variable my_int equals to 7L
+> my_int <- 7L
+> 
+> # Create a logical variable my_logi equals to TRUE
+> my_logi <- TRUE
+> 
+> # Create a character variable my_char equals to "Learn R the easy way!"
+> my_char <- "Learn R the easy way!"
+>   
+> # Use function: ls() to list all the variables we just created
+> ls()
+[1] "my_char" "my_int"  "my_logi" "my_num" 
+> 
+> 
+> # Use function: class() to check the variable types respectively
+> class(my_num)
+[1] "numeric"
+> class(my_int)
+[1] "integer"
+> class(my_logi)
+[1] "logical"
+> class(my_char)
+[1] "character"
+
+
+3. 
+> # Add my_num and my_int
+> my_num + my_int
+[1] 15
+> 
+> # Use class() to check the result above
+> class(my_num + my_int)
+[1] "numeric"
+> 
+> # Add my_int and my_logi
+> my_int + my_logi
+[1] 8
+> 
+> # Use class() to check the result above
+> class(my_int + my_logi)
+[1] "integer"
+> 
+> # Re-assign my_logi with FALSE
+> my_logi <- FALSE
+> 
+> # Add my_num and my_logi
+> my_num + my_logi
+[1] 8
+> 
+> 
+> # Use class() to check the result above
+> class(my_num + my_logi)
+[1] "numeric"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

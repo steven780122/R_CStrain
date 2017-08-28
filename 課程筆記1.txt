@@ -1,0 +1,117 @@
+Email:tony@kyosei.ai
+課程網頁: http://yaojenkuo.io/r_programming/
+FB社群: https://www.facebook.com/groups/ntucsietrainR/	
+
+Day1: 
+(1).
+https://www.learn-r-the-easy-way.tw/ 主講寫的
+http://www.statmethods.net/  Quick R很不錯
+http://r4ds.had.co.nz/   直接進Data science
+以下都很棒
+The Art of R Programming
+Advanced R（Book）
+Advanced R（Website）
+
+(2). 裝R, RStudio
+R: 安裝時不用32bit
+舊版RStudio沒有提示
+RStudio 的console按一下右上角, 還原完整區塊!
+CTRL + L 可以清空
+存檔選CP950即可
+右上角history也可以save!
+
+my_firstname <- "ChungFu"
+my_lastname <- "Hsiao"
+my_age <- 28
+my_gender <- "Male"
+
+清空物件語法: rm(my):
+my_firstname <- "ChungFu"
+> my_lastname <- "Hsiao"
+> my_age <- 28
+> my_gender <- "Male"
+> ls()
+[1] "my_age"       "my_firstname" "my_gender"    "my_lastname" 
+> rm(list=ls())
+> 
+
+*看working dir: getwd()
+*write.csv(iris, file = "iris.csv"): 在working dir建立csv
+*iris_csv <- read.csv("iris.csv"):讀取
+若是其他路徑可以改成絕對路徑:  記得要改成反斜線
+*也可以直接改working dir:setwd()      >> 或是用IDE的session!!!
+
+view()
+
+看套件路徑:
+.libPaths()
+[1] "C:/Users/cutesteven/Documents/R/win-library/3.4"
+[2] "C:/Program Files/R/R-3.4.1/library"      
+
+*裝套件: 到右下的install
+*xls_file <- read_excel("test1.xlsx")  讀取working dir的xlsx
+
+*用指令安裝套件:
+install.packages("jsonlite")
+
+*用指令import套件進來
+library(jsonlite)
+> ?fromJSON   可以看到套件可以用了!!
+除非detached (detach("package:jsonlite", unload=TRUE))!!
+
+因為講求效率，要用到才library進來!!
+** 用"?XX"  可以看DOC
+*離開可以用q()
+
+------------------------
+正式課程:
+(1)餘數
+> 9 %% 2
+[1] 1
+> 9.5 %% 4
+[1] 1.5
+> 9.3 %% 4.1
+[1] 1.1
+
+(2).  RStudio 中可以按 Alt 與 - 來產生 <- 符號
+
+(3)> 87
+[1] 87
+> class(87)
+[1] "numeric"
+> class(8.7)
+[1] "numeric"
+> class(87L)         L:integer
+[1] "integer"
+> class(8.7L)
+[1] "numeric"
+Warning message:
+integer literal 8.7L contains decimal; using numeric value 
+
+> ?head
+> 8 + 7i
+[1] 8+7i
+> class(8 + 7i)
+[1] "complex"
+> my_name <- "Steven"
+> my_name <- Steven                      #沒雙引號都是物件!
+Error: object 'Steven' not found
+
+> sentence <-  "You accidentally proposed to Rachel"
+> sentence <-  "You "accidentally" proposed to Rachel"
+Error: unexpected symbol in "sentence <-  "You "accidentally"
+> sentence <-  "You \"accidentally\" proposed to Rachel"
+> sentence
+[1] "You \"accidentally\" proposed to Rachel"
+> writeLines(sentence)
+You "accidentally" proposed to Rachel
+
+> 8 %in% 1:10
+[1] TRUE
+
+
+
+
+
+
+
