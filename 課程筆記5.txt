@@ -1,0 +1,396 @@
+1. Array(R 相對用不多)
+> array(1:24, dim = c(2, 3, 4))  		: 看得出來是回傳4個2*3的矩陣
+, , 1
+
+     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+
+, , 2
+
+     [,1] [,2] [,3]
+[1,]    7    9   11
+[2,]    8   10   12
+
+, , 3
+
+     [,1] [,2] [,3]
+[1,]   13   15   17
+[2,]   14   16   18
+
+, , 4
+
+     [,1] [,2] [,3]
+[1,]   19   21   23
+[2,]   20   22   24
+
+
+2.
+> arr[, , 1]
+     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+
+3.印出第2個矩陣，的第一個col 
+ > arr[, 1, 2]   				>> better
+[1] 7 8
+
+> arr[, , 2][, 1]
+[1] 7 8
+
+> arr[, , 2][, 1][1]
+[1] 7
+
+iris3是用array方式儲存
+
+
+ iris[iris$Species == "setosa", ]
+   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1           5.1         3.5          1.4         0.2  setosa
+2           4.9         3.0          1.4         0.2  setosa
+3           4.7         3.2          1.3         0.2  setosa
+4           4.6         3.1          1.5         0.2  setosa
+5           5.0         3.6          1.4         0.2  setosa
+6           5.4         3.9          1.7         0.4  setosa
+7           4.6         3.4          1.4         0.3  setosa
+8           5.0         3.4          1.5         0.2  setosa
+9           4.4         2.9          1.4         0.2  setosa
+10          4.9         3.1          1.5         0.1  setosa
+11          5.4         3.7          1.5         0.2  setosa
+12          4.8         3.4          1.6         0.2  setosa
+13          4.8         3.0          1.4         0.1  setosa
+14          4.3         3.0          1.1         0.1  setosa
+15          5.8         4.0          1.2         0.2  setosa
+16          5.7         4.4          1.5         0.4  setosa
+17          5.4         3.9          1.3         0.4  setosa
+18          5.1         3.5          1.4         0.3  setosa
+19          5.7         3.8          1.7         0.3  setosa
+20          5.1         3.8          1.5         0.3  setosa
+21          5.4         3.4          1.7         0.2  setosa
+22          5.1         3.7          1.5         0.4  setosa
+23          4.6         3.6          1.0         0.2  setosa
+24          5.1         3.3          1.7         0.5  setosa
+25          4.8         3.4          1.9         0.2  setosa
+26          5.0         3.0          1.6         0.2  setosa
+27          5.0         3.4          1.6         0.4  setosa
+28          5.2         3.5          1.5         0.2  setosa
+29          5.2         3.4          1.4         0.2  setosa
+30          4.7         3.2          1.6         0.2  setosa
+31          4.8         3.1          1.6         0.2  setosa
+32          5.4         3.4          1.5         0.4  setosa
+33          5.2         4.1          1.5         0.1  setosa
+34          5.5         4.2          1.4         0.2  setosa
+35          4.9         3.1          1.5         0.2  setosa
+36          5.0         3.2          1.2         0.2  setosa
+37          5.5         3.5          1.3         0.2  setosa
+38          4.9         3.6          1.4         0.1  setosa
+39          4.4         3.0          1.3         0.2  setosa
+40          5.1         3.4          1.5         0.2  setosa
+41          5.0         3.5          1.3         0.3  setosa
+42          4.5         2.3          1.3         0.3  setosa
+43          4.4         3.2          1.3         0.2  setosa
+44          5.0         3.5          1.6         0.6  setosa
+45          5.1         3.8          1.9         0.4  setosa
+46          4.8         3.0          1.4         0.3  setosa
+47          5.1         3.8          1.6         0.2  setosa
+48          4.6         3.2          1.4         0.2  setosa
+49          5.3         3.7          1.5         0.2  setosa
+50          5.0         3.3          1.4         0.2  setosa
+_____
+> iris3[1:6, , "Setosa"]
+     Sepal L. Sepal W. Petal L. Petal W.
+[1,]      5.1      3.5      1.4      0.2
+[2,]      4.9      3.0      1.4      0.2
+[3,]      4.7      3.2      1.3      0.2
+[4,]      4.6      3.1      1.5      0.2
+[5,]      5.0      3.6      1.4      0.2
+[6,]      5.4      3.9      1.7      0.4
+
+> iris3[1:6, "Sepal L.", "Setosa"]
+[1] 5.1 4.9 4.7 4.6 5.0 5.4
+_____________________________
+List很重要!
+首先用影集Friends:
+> genre <- "Sitcom"
+> created_by <- c("David Crane, "Marta Kaoffman")
+
+> created_by <- c("David Crane", "Marta Kaoffman")
+> Starring <- c("Jennifer Aniston", "Courteney Cox", "Lisa Kudrow", "Matt LeBlanc", "Matthew Perry", "David Schwimmer")
+> seasons <- 10
+> is_airing <- FALSE
+> friends_df <- data.frame(genre, created_by, Starring, seasons, is_airing)
+> friends_df
+   genre     created_by         Starring seasons is_airing
+1 Sitcom    David Crane Jennifer Aniston      10     FALSE
+2 Sitcom Marta Kaoffman    Courteney Cox      10     FALSE
+3 Sitcom    David Crane      Lisa Kudrow      10     FALSE
+4 Sitcom Marta Kaoffman     Matt LeBlanc      10     FALSE
+5 Sitcom    David Crane    Matthew Perry      10     FALSE
+6 Sitcom Marta Kaoffman  David Schwimmer      10     FALSE
+
+上面這是傳統的，會重複出現
+所以要用List:
+
+> friends_list <- list(genre, created_by, Starring, seasons, is_airing)
+> friends_list
+[[1]]
+[1] "Sitcom"
+
+[[2]]
+[1] "David Crane"    "Marta Kaoffman"
+
+[[3]]
+[1] "Jennifer Aniston" "Courteney Cox"    "Lisa Kudrow"      "Matt LeBlanc"    
+[5] "Matthew Perry"    "David Schwimmer" 
+
+[[4]]
+[1] 10
+
+[[5]]
+[1] FALSE
+
+
+
+> friends_list[[3]][5]
+[1] "Matthew Perry"
+
+**但是啊 不可能都知道索引值:
+所以原本assign list的時候改成:
+> friends_list <- list(Genre =genre, Created_by = created_by, Starring = starring,Seasons = seasons, Is_airing = is_airing)
+> friends_list
+$Genre
+[1] "Sitcom"
+
+$Created_by
+[1] "David Crane"    "Marta Kaoffman"
+
+$Starring
+[1] "Jennifer Aniston" "Courteney Cox"    "Lisa Kudrow"      "Matt LeBlanc"    
+[5] "Matthew Perry"    "David Schwimmer" 
+
+$Seasons
+[1] 10
+
+$Is_airing
+[1] FALSE
+
+則:> friends_list["Genre"][1]
+$Genre
+[1] "Sitcom"
+> friends_list$Starring
+[1] "Jennifer Aniston" "Courteney Cox"    "Lisa Kudrow"      "Matt LeBlanc"    
+[5] "Matthew Perry"    "David Schwimmer" 
+
+
+
+** 直接再assign:
+> friends_list$Role <- c("Rachel Green", "Phoebe Buffay", "Monica Geller", "Joey Tribbiani", "Chandler Bing", "Ross Geller")
+> friends_list
+$Genre
+[1] "Sitcom"
+
+$Created_by
+[1] "David Crane"    "Marta Kaoffman"
+
+$Starring
+[1] "Jennifer Aniston" "Courteney Cox"    "Lisa Kudrow"      "Matt LeBlanc"    
+[5] "Matthew Perry"    "David Schwimmer" 
+
+$Seasons
+[1] 10
+
+$Is_airing
+[1] FALSE
+
+$Role
+[1] "Rachel Green"   "Phoebe Buffay"  "Monica Geller"  "Joey Tribbiani"
+[5] "Chandler Bing"  "Ross Geller"   
+
+$Role
+[1] "Rachel Green"   "Phoebe Buffay"  "Monica Geller"  "Joey Tribbiani"
+[5] "Chandler Bing"  "Ross Geller"  
+
+
+> friends_list
+$Genre
+[1] "Sitcom"
+
+$Created_by
+[1] "David Crane"    "Marta Kaoffman"
+
+$Starring
+[1] "Jennifer Aniston" "Courteney Cox"    "Lisa Kudrow"      "Matt LeBlanc"    
+[5] "Matthew Perry"    "David Schwimmer" 
+
+$Seasons
+[1] 10
+
+$Is_airing
+[1] FALSE
+
+> friends_list$Role <- c("Rachel Green", "Phoebe Buffay", "Monica Geller", "Joey Tribbiani", "Chandler Bing", "Ross Geller")
+> friends_list
+$Genre
+[1] "Sitcom"
+
+$Created_by
+[1] "David Crane"    "Marta Kaoffman"
+
+$Starring
+[1] "Jennifer Aniston" "Courteney Cox"    "Lisa Kudrow"      "Matt LeBlanc"    
+[5] "Matthew Perry"    "David Schwimmer" 
+
+$Seasons
+[1] 10
+
+$Is_airing
+[1] FALSE
+
+$Role
+[1] "Rachel Green"   "Phoebe Buffay"  "Monica Geller"  "Joey Tribbiani"
+[5] "Chandler Bing"  "Ross Geller"   
+
+> friends_list$Role <- c("Rachel Green", "Phoebe Buffay", "Monica Geller", "Joey Tribbiani", "Chandler Bing", "Ross Geller")
+> friends_list
+$Genre
+[1] "Sitcom"
+
+$Created_by
+[1] "David Crane"    "Marta Kaoffman"
+
+$Starring
+[1] "Jennifer Aniston" "Courteney Cox"    "Lisa Kudrow"      "Matt LeBlanc"    
+[5] "Matthew Perry"    "David Schwimmer" 
+
+$Seasons
+[1] 10
+
+$Is_airing
+[1] FALSE
+
+$Role
+[1] "Rachel Green"   "Phoebe Buffay"  "Monica Geller"  "Joey Tribbiani"
+[5] "Chandler Bing"  "Ross Geller"   
+
+> friends_list$Cast_df <- data.frame(starring = friends_list$Starring, role = friends_list$Role)
+> friends_list
+$Genre
+[1] "Sitcom"
+
+$Created_by
+[1] "David Crane"    "Marta Kaoffman"
+
+$Starring
+[1] "Jennifer Aniston" "Courteney Cox"    "Lisa Kudrow"      "Matt LeBlanc"    
+[5] "Matthew Perry"    "David Schwimmer" 
+
+$Seasons
+[1] 10
+
+$Is_airing
+[1] FALSE
+
+$Role
+[1] "Rachel Green"   "Phoebe Buffay"  "Monica Geller"  "Joey Tribbiani"
+[5] "Chandler Bing"  "Ross Geller"   
+
+$Cast_df
+          starring           role
+1 Jennifer Aniston   Rachel Green
+2    Courteney Cox  Phoebe Buffay
+3      Lisa Kudrow  Monica Geller
+4     Matt LeBlanc Joey Tribbiani
+5    Matthew Perry  Chandler Bing
+6  David Schwimmer    Ross Geller
+
+**直接看Data frame部分
+
+> friends_list$Cast_df <- data.frame(starring = friends_list$Starring, role = friends_list$Role)
+> friends_list$Cast_df
+          starring           role
+1 Jennifer Aniston   Rachel Green
+2    Courteney Cox  Phoebe Buffay
+3      Lisa Kudrow  Monica Geller
+4     Matt LeBlanc Joey Tribbiani
+5    Matthew Perry  Chandler Bing
+6  David Schwimmer    Ross Geller
+> View(friends_list$Cast_df)
+
+
+**也可以把list放進list
+
+> friends_list$F_list <- friends_list$Starring
+> friends_list
+$Genre
+[1] "Sitcom"
+
+$Created_by
+[1] "David Crane"    "Marta Kaoffman"
+
+$Starring
+[1] "Jennifer Aniston" "Courteney Cox"    "Lisa Kudrow"      "Matt LeBlanc"    
+[5] "Matthew Perry"    "David Schwimmer" 
+
+$Seasons
+[1] 10
+
+$Is_airing
+[1] FALSE
+
+$Role
+[1] "Rachel Green"   "Phoebe Buffay"  "Monica Geller"  "Joey Tribbiani"
+[5] "Chandler Bing"  "Ross Geller"   
+
+$Cast_df
+          starring           role
+1 Jennifer Aniston   Rachel Green
+2    Courteney Cox  Phoebe Buffay
+3      Lisa Kudrow  Monica Geller
+4     Matt LeBlanc Joey Tribbiani
+5    Matthew Perry  Chandler Bing
+6  David Schwimmer    Ross Geller
+
+$F_list
+[1] "Jennifer Aniston" "Courteney Cox"    "Lisa Kudrow"      "Matt LeBlanc"    
+[5] "Matthew Perry"    "David Schwimmer" 
+
+
+
+*** or 還可以把整個list全部再放入:
+> friends_list$F_list <- friends_list
+則
+> friends_list$F_list$Starring
+[1] "Jennifer Aniston" "Courteney Cox"    "Lisa Kudrow"      "Matt LeBlanc"    
+[5] "Matthew Perry"    "David Schwimmer" 
+
+
+_____________________________
+函數時:
+原本:
+say_hello <- function(){
+  return("Hello World")
+}
+
+say_hello()
+
+可改成:
+say_hello <- function(){
+  to_r <- "Hello R!"
+  to_world <- "Hello World!"
+  return(list(tor = to_r, tow = to_world))
+}
+
+say_hello()
+則印出:
+$tor
+[1] "Hello R!"
+
+$tow
+[1] "Hello World!"
+
+
+
+
+
+
+
