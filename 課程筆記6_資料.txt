@@ -1,0 +1,105 @@
+開始資料囉:
+先看影片:
+https://www.youtube.com/watch?v=jbkSRLYSojo
+
+1. plot:
+x <- 1:3
+y <- 1:3
+plot(x, y)
+
+劃出3個點(1,1) 2,2 3,3
+
+
+x <- -5:5
+y <- x**2
+plot(x, y)
+
+*若當x, y軸的範圍想自訂: xlim, ylim:
+x <- -5:5
+y <- x**2
+plot(x, y, xlim = c(-10, 10), ylim = c(-5, 30))
+
+
+*
+x <- -5:5
+y <- x**2
+plot(x, y, xlim = c(-10, 10), 
+     ylim = c(-5, 30),
+     main = "y = x^2",     >主標(在上方) 
+     sub = "Fig 1.",       >副標 在下方
+     xlab = "X",   	   >x label: 橫軸標
+     ylab = "Y")	   >y label: 縱軸標
+
+_________________
+
+pch 標記的樣式:
+x <- -5:5
+y <- x**2
+plot(x, y, xlim = c(-10, 10), 
+     ylim = c(-5, 30),
+     main = "y = x^2", 
+     sub = "Fig 1.", 
+     xlab = "X",
+     ylab = "Y",
+     pch = 23)     >>菱形點
+
+type = "l" 描繪線條
+x <- -5:5
+y <- x**2
+plot(x, y, xlim = c(-10, 10), 
+     ylim = c(-5, 30),
+     main = "y = x^2", sub = "Fig 1.", 
+     xlab = "X", ylab = "Y",
+     pch = 23, type = "l",   >> l為線條
+     )
+
+
+*公差大:
+x <- seq(-5, 5, by  =0.1)			>> 改公差
+y <- x**2
+plot(x, y, xlim = c(-10, 10), 
+     ylim = c(-5, 30),
+     main = "y = x^2", sub = "Fig 1.", 
+     xlab = "X", ylab = "Y",
+     pch = 23, type = "l",
+     )
+
+* cex 放大點:
+x <- -5:5
+y <- x**2
+plot(x, y, xlim = c(-10, 10), 
+     ylim = c(-5, 30),
+     main = "y = x^2", sub = "Fig 1.", 
+     xlab = "X", ylab = "Y",
+     pch = 23, type = "p",
+     cex =3
+)
+
+*lwd 線條寬
+x <- -5:5
+y <- x**2
+plot(x, y, xlim = c(-10, 10), 
+     ylim = c(-5, 30),
+     main = "y = x^2", sub = "Fig 1.", 
+     xlab = "X", ylab = "Y",
+     pch = 23, type = "l",
+     cex =3, lwd=3
+)
+
+col 顏色
+col.axis
+col.lab
+col.main
+col.sub
+bg
+plot(x, y, xlab = "x label", ylab = "y label",
+     main = expression(y == x^2), sub = "Getting started",
+     col.axis = "red", col.lab = "green", col.main = "blue",
+     col.sub = "orange", col = "red", bg = "green", pch = 21)
+
+等等  自己玩!
+
+
+
+
+
