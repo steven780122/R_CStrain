@@ -1,0 +1,5 @@
+plot(cars$speed, cars$dist, xlab = "Speed", ylab = "Dist", main = "Cars Dataframe")
+#title("Cars Dataframe")
+lm_fit <- lm(formula = dist ~ speed, data = cars)
+#abline(lm_fit)
+abline(lm_fit, lwd = 2, col = "blue")
