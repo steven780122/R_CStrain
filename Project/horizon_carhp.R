@@ -18,9 +18,11 @@ bar_plt <- barplot(names.arg = vehicle,
         cex.names = 0.3,
         cex.axis = 0.7,
         xlab = "Horsepower",
-        main = "Vehicle Horsepower"
+        main = "Vehicle Horsepower",
+        xlim = c(0, 380)
 )
-text(x = bar_plt, y = sorted_mtcars$hp,
-     
+text(y = bar_plt, x = sorted_mtcars$hp,
+     labels = sorted_mtcars$hp,
+     pos = 4, cex = 0.7
      
      )
