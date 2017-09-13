@@ -1,0 +1,111 @@
+---
+title: "Demo"
+author: "Steven.Hsiao"
+date: "2017年9月13日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 課程名稱
+這堂課程是*R語言*與資料科學應用。
+
+> “My mama always said, ‘Life was like a box of chocolates. You never know what you’re gonna get.’”
+
+## Table
+|喜歡的樂團|Lead Vocal|起源|
+|----------|----------|----|
+|Beyond|黃家駒|香港|
+|The Beatles|John Lennon|英國|
+
+## 數學方程式
+$$y = x^2$$
+$y = x^2$ 
+
+## 連結
+[輕鬆學習R語言](http://www.books.com.tw/products/0010763975)
+
+## 圖片(可用絕對路徑和相對路徑)
+![](http://www.gotop.com.tw/waweb2004/WawebImages/BookLL/AEL018500.jpg)
+![](R_logo.svg.png)
+### echo = FALSE用來隱藏程式碼
+```{r out.width="100px", echo = FALSE}
+knitr::include_graphics("http://www.gotop.com.tw/waweb2004/WawebImages/BookLL/AEL018500.jpg")
+```
+
+
+## Code Chunks
+在R語言中撰寫Hello world的方法是`print("Hello world")`
+
+```python
+import numpy as np
+arr = np.linespace(1, 10, 10)
+print(arr)
+``
+
+
+```{r message=FALSE}
+library(ggplot2)
+
+r_norm <- data.frame(x = rnorm(10000))
+ggplot(r_norm, aes(x = x)) + 
+  geom_histogram()
+
+
+```{R error = TRUE}
+as.integer("Hello world")
+```
+`
+
+```{R warning = FALSE}
+as.integer("Hello world")
+```
+
+
+```{R}
+as.integer("Hello world")
+```
+
+
+```{R}
+summary(iris)
+```
+
+
+```{R results = "asis"}
+summary(iris)
+```
+
+
+```{R echo = FALSE}      
+summary(iris)
+```
+
+
+```{R results = "hide"}      
+summary(cars)
+```
+
+```{r message=FALSE, fig.width = 50, fig.height= 10}
+library(ggplot2)
+
+r_norm <- data.frame(x = rnorm(10000))
+ggplot(r_norm, aes(x = x)) + 
+  geom_histogram()
+```
+
+
+
+## Favorite Foods
+- 垃圾食物
+    - 肯德基
+- 非垃圾食物
+    - 無
+    
+1. 第一點
+2. 第二點
+
+### 跑步鞋簡介
+我喜歡穿NIKE的**跑步鞋**

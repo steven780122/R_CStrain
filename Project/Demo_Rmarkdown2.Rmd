@@ -1,0 +1,46 @@
+---
+title: "demo"
+author: "Tony Kuo"
+date: "2017年9月13日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Course Name
+
+這堂課程是 *R 語言*與資料科學應用。
+
+## 連結
+[輕鬆學習R語言](http://www.books.com.tw/products/0010763975)
+
+## Code Chunks
+
+在 R 語言中撰寫 Hello world 的方法是 `print("Hello world!")`。
+
+```{r message=FALSE}
+library(ggplot2)
+
+r_norm <- data.frame(x = rnorm(10000))
+ggplot(r_norm, aes(x = x)) + 
+  geom_histogram()
+```
+
+## Favorite Foods
+
+- 垃圾食物
+    - 肯德基炸雞
+    - 漢堡王漢堡
+    - Baskin & Robbins 冰淇淋
+- 非垃圾食物
+    - 無
+
+1. 第一點
+2. 第二點
+3. 第三點
+
+### Running Shoes
+
+我喜歡穿 NIKE 的**跑步鞋**。
